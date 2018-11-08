@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Panel</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Ajax/API_Location.js"></script>
+    <script src="js/UI/AllAppointment.js"></script>
+    <script src="js/UI/Logout.js"></script>
+    <script src="js/UI/Validation.js"></script>
+    <script src="js/Ajax/Panel.js"></script>
+    <script src="js/UI/Profile.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+    <script src="js/CustomerPane.js"></script>
+
+    <style>
+        li span {
+            text-align: center;
+        }
+
+        .panel {
+            display: inline-block;
+            background: #FFFFFF;
+            margin: 50px;
+            min-width: 45%;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        body {
+              background: #005cbf; /* fallback for old browsers */
+            background: -webkit-linear-gradient(right, #005cbf, #006AF5);
+            background: -moz-linear-gradient(right, #005cbf, #006AF5);
+            background: -o-linear-gradient(right, #005cbf, #006AF5);
+            background: linear-gradient(to left, #005cbf, #006AF5);
+        }
+
+        #logout {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+        }
+
+        form * {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+
+<header style="border-bottom: 1px black solid;margin-bottom: 15px;padding-bottom: 15px;">
+    <h1 style="text-align: center;color: white">Customer Panel</h1>
+    <button id="logout" class="btn-danger" onclick="logout()">Log out</button>
+</header>
+<div class="container">
+
+
+    <div class="panel panel-default">
+        <h3 class="panel-heading" style="text-align: center">My Appointments</h3>
+        <div class="panel-body">
+            <ul class="list-group" id="Appointments">
+                <li id="AppointmentsMessage">Loading</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <h3 class="panel-heading">Book Appointment</h3>
+        <div class="panel-body">
+            <div class="btn-group">
+                <div>
+                    <select name="Barbers" id="SelectBarber" onchange="BarberSelect()">
+                        <option value="">Select Barber</option>
+                    </select>
+                    <input id="AppointmentDate" type="date" style="display: none" onchange="CheckDate()"/>
+
+                    <input type="time" name="Time" id="AppointmentTime" style="display: none;pointer-events: none">
+                    <button onclick="SetAppointmentWithBarber()">Submit</button>
+                    <span class="text-warning" id="SetAppointmentError"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+                <h2 class="panel-heading">My details</h2>
+        <h4>Name: <span id="ProfileName"></span></h4>
+        <h4>ProfileType: <span id="ProfileType"></span></h4>
+        <h4>ProfileRating: <span id="ProfileRating"></span></h4>
+        <h4>ProfileEmail: <span id="ProfileEmail"></span></h4>
+
+
+    </div>
+
+</div>
+</body>
+</html>
